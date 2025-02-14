@@ -1,0 +1,36 @@
+[page]
+title = "Internet Usage Analysis"
+layout = "wide"
+icon = "🌐"
+
+[theme]
+background_color = "black"
+text_color = "white"
+font_family = "'Times New Roman', serif"
+
+[theme.button]
+background_color = "#0000FF"
+text_color = "white"
+width = "530px"
+height = "50px"
+font_size = "20px"
+font_weight = "bold"
+hover_color = "#00008B"
+
+[theme.textarea]
+background_color = "black"
+text_color = "white"
+
+[theme.social_icons]
+background_color = "#e0e0e0"
+
+[theme.header]
+background_color = "#2E2E2E"
+font_size = "20px"
+font_weight = "bold"
+text_color = "#333"
+
+[theme.header_title]
+font_size = "36px"
+font_weight = "bold"
+text_color = "#FFFFFF"

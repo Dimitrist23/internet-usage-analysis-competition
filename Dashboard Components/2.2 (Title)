@@ -1,0 +1,162 @@
+import streamlit as st
+import plotly.express as px
+from streamlit_extras.add_vertical_space import add_vertical_space
+
+# Set page config
+st.set_page_config(page_title="Internet Usage Analysis", layout="wide")
+
+# Custom CSS for styling
+st.markdown("""
+    <style>
+        /* App background */
+        .stApp {
+            background-color: black;
+            color: white;
+        }
+
+        /* Button style */
+        .stButton>button {
+            background-color: blue;
+            color: white;
+            width: 510px;
+            height: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Button hover effect */
+        .stButton>button:hover {
+            background-color: darkblue; /* Change to dark blue when hovered */
+        }
+
+        /* Text area background and color */
+        .stTextArea textarea {
+            background-color: black;
+            color: white;
+            border: none;
+        }
+
+        /* Social icons background, size, and hover effect */
+        .social-icons img {
+            background-color: #e0e0e0; /* Light gray background */
+            border-radius: 50%; /* Circular icon effect */
+            padding: 8px;
+            width: 50px;
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Social icons hover effect */
+        .social-icons img:hover {
+            filter: brightness(0.9);
+            transform: scale(1.1); /* Slightly enlarge on hover */
+        }
+
+        /* Gray top section */
+        header {
+            background: linear-gradient(to right, #d3d3d3, #f7f7f7);
+            padding: 15px;
+            border-bottom: 3px solid #999;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Title inside header */
+        .header-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Align header box and dark container */
+        header {
+            background-color: #2E2E2E !important;
+        }
+
+    </style>
+""", unsafe_allow_html=True)
+
+# Title in header section
+st.markdown("<h1 class='header-title'>🌍 INTERNET USAGE ANALYSIS</h1>", unsafe_allow_html=True)
+
+# Navigation Tabs
+col1, col_center, col2 = st.columns([1, 0.5, 1])
+
+with col1:
+    continent_tab = st.button("🌍 CONTINENT TAB")
+
+with col_center:
+    st.markdown("""
+        <div style="display: flex; justify-content: center; gap: 10px;" class="social-icons">
+            <a href="https://www.linkedin.com" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" width="50"/>
+            </a>
+            <a href="https://github.com" target="_blank">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="50"/>
+            </a>
+        </div>
+    """, unsafe_allow_html=True)
+
+with col2:
+    country_tab = st.button("🏳 COUNTRY TAB")
+
+# Continent Tab
+if continent_tab:
+    st.header("Analysis of Internet Usage by Continent")
+    col1, col2 = st.columns(2)
+
+    with col1:
+        fig1 = px.line(x=[1, 2, 3], y=[3, 1, 6], title="Sample Graph 1")
+        st.plotly_chart(fig1)
+        st.markdown("**Description for Graph 1:** Enter analysis here...")
+
+    with col2:
+        fig2 = px.bar(x=["A", "B", "C"], y=[3, 1, 6], title="Sample Graph 2")
+        st.plotly_chart(fig2)
+        st.markdown("**Description for Graph 2:** Enter analysis here...")
+
+# Country Tab
+if country_tab:
+    st.header("Analysis of Internet Usage by Country")
+    # Helper data structure for continent and country mapping
+    country_data = {
+        "Asia": ["Nigeria", "China", "India"],
+        "Europe": ["Greece", "Germany", "France"],
+        "Africa": ["South Africa", "Egypt"],
+    }
+
+    st.markdown("### Select Countries")
+    selected_countries = []
+    selected_continent = st.radio("Select Continent", list(country_data.keys()))
+
+    if selected_continent:
+        selected_countries = st.multiselect(
+            f"Select countries from {selected_continent}", country_data[selected_continent]
+        )
+
+    st.write("### Selected Countries:")
+    st.write(selected_countries)
+    col1, col2 = st.columns(2)
+
+    with col1:
+        fig3 = px.line(x=[1, 2, 3], y=[2, 4, 1], title="Sample Graph 3")
+        st.plotly_chart(fig3)
+        st.markdown("**Description for Graph 3:** Enter analysis here...")
+
+        fig4 = px.scatter(x=[1, 2, 3], y=[5, 2, 7], title="Sample Graph 4")
+        st.plotly_chart(fig4)
+        st.markdown("**Description for Graph 4:** Enter analysis here...")
+
+    with col2:
+        fig5 = px.bar(x=["X", "Y", "Z"], y=[4, 3, 5], title="Sample Graph 5")
+        st.plotly_chart(fig5)
+        st.markdown("**Description for Graph 5:** Enter analysis here...")
+
+        fig6 = px.line(x=[1, 2, 3], y=[6, 1, 8], title="Sample Graph 6")
+        st.plotly_chart(fig6)
+        st.markdown("**Description for Graph 6:** Enter analysis here...")

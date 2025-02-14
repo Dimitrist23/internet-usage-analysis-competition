@@ -1,0 +1,261 @@
+import streamlit as st
+import plotly.express as px
+import streamlit.components.v1 as components
+
+# Set page configuration with the new theme settings
+st.set_page_config(page_title="Internet Usage Analysis", layout="wide", page_icon="🌐")
+
+# Custom theme styling (incorporating your provided lines)
+st.markdown("""
+    <style>
+    /* Global app background and font style */
+    .stApp {
+        background-color: black;
+        color: white;
+        font-family: 'Times New Roman', serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    /* Button styles and hover effects */
+    .stButton>button {
+        background-color: #0000FF;  /* Blue as primary color */
+        color: white;
+        width: 530px; /* Fixed width for 1920x1080 */
+        height: 50px;
+        font-size: 20px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0; /* Add margin for spacing between buttons */
+    }
+
+    .stButton>button:hover {
+        background-color: #00008B; /* Dark blue on hover */
+    }
+
+    /* Text area style */
+    .stTextArea textarea {
+        background-color: black;
+        color: white;
+        border: none;
+        width: 100%;
+    }
+
+    /* Social icons style and hover effect */
+    .social-icons img {
+        background-color: #e0e0e0;
+        border-radius: 50%;
+        padding: 8px;
+        width: 50px;
+        height: 50px;
+        transition: transform 0.3s ease;
+    }
+
+    .social-icons img:hover {
+        filter: brightness(0.9);
+        transform: scale(1.1); /* Enlarges on hover */
+    }
+
+    /* Header styling */
+    header {
+        background-color: #2E2E2E !important;
+        padding: 15px;
+        border-bottom: 3px solid #999;
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+    }
+
+    /* Title in header */
+    .header-title {
+        font-size: 36px;
+        font-weight: bold;
+        color: #FFFFFF;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        /* For small screens, make buttons and elements more flexible */
+        .stButton>button {
+            width: 100%; /* Full-width buttons on mobile */
+        }
+
+        .header-title {
+            font-size: 28px; /* Smaller font size for mobile */
+        }
+
+        .stApp {
+            padding: 10px;
+        }
+
+        .stColumns {
+            flex-direction: column; /* Stack columns for small screens */
+        }
+
+        .social-icons {
+            flex-direction: column;
+        }
+
+        .stTextArea textarea {
+            font-size: 14px;
+        }
+
+        /* Adjust chart sizes for smaller screens */
+        .stPlotlyChart {
+            width: 100% !important;
+        }
+
+        /* Align Tabs in the center */
+        .stButton {
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .stButton>button {
+            width: 60%; /* Adjust button width for tablet-sized screens */
+        }
+
+        .stApp {
+            padding: 20px;
+        }
+
+        .header-title {
+            font-size: 32px;
+        }
+
+        .stColumns {
+            flex-direction: row;
+        }
+    }
+
+    /* Ensure the layout remains fixed for 1920x1080 resolution */
+    @media (min-width: 1920px) {
+        .stButton>button {
+            width: 530px; /* Fixed width for large screens */
+        }
+
+        .header-title {
+            font-size: 36px; /* Standard large font size */
+        }
+
+        .stApp {
+            padding: 20px;
+        }
+
+        .stButton>button {
+            margin: 10px 0; /* Adjust button spacing */
+        }
+
+        /* Center the tabs in the header */
+        .stButton {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    </style>
+""", unsafe_allow_html=True)
+
+# Title in header section
+st.markdown("<h1 class='header-title'>🌐 The Evolution of Internet</h1>", unsafe_allow_html=True)
+
+# Navigation Tabs using columns
+col1, col_center, col2 = st.columns([1, 0.5, 1])
+
+with col1:
+    continent_tab = st.button("🌍 Continents")
+
+with col_center:
+    # Social media links
+    st.markdown("""
+        <div style="display: flex; justify-content: center; gap: 10px;" class="social-icons">
+            <a href="https://www.linkedin.com" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" width="50"/>
+            </a>
+            <a href="https://github.com" target="_blank">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="50"/>
+            </a>
+        </div>
+    """, unsafe_allow_html=True)
+
+with col2:
+    country_tab = st.button("🏳️ Countries")
+
+# Continent Tab content
+if continent_tab:
+    st.header("Analysis of Internet Usage by Continent:")
+
+    # Graph 1: ContLine
+    st.components.v1.html(
+        open("C:/Users/anton/Desktop/interactive_graphs/ContLine.html", "r", encoding="utf-8").read(),
+        height=400
+    )
+    st.markdown("**Description for Graph 1:** Enter analysis here...")
+
+    # Spacer for better visual separation
+    st.markdown("---")
+
+    # Graph 2: Globe
+    st.components.v1.html(
+        open("C:/Users/anton/Desktop/interactive_graphs/Globe.html", "r", encoding="utf-8").read(),
+        height=700
+    )
+    st.markdown("**Description for Graph 2:** Enter analysis here...")
+
+# Country Tab content
+if country_tab:
+    st.header("Analysis of Internet Usage by Country:")
+
+    # Helper data structure for continent and country mapping
+    country_data = {
+        "Asia": ["Nigeria", "China", "India"],
+        "Europe": ["Greece", "Germany", "France"],
+        "Africa": ["South Africa", "Egypt"],
+    }
+
+    st.markdown("### Select Countries")
+    selected_countries = []
+    selected_continent = st.radio("Select Continent", list(country_data.keys()))
+
+    if selected_continent:
+        selected_countries = st.multiselect(
+            f"Select countries from {selected_continent}", country_data[selected_continent]
+        )
+
+    st.write("### Selected Countries:")
+    st.write(selected_countries)
+
+    # Displaying graphs in columns
+    col1, col2 = st.columns([1, 1])  # Equal-width columns for better scaling
+
+    with col1:
+        fig3 = px.line(x=[1, 2, 3], y=[2, 4, 1], title="Sample Graph 3")
+        st.plotly_chart(fig3, use_container_width=True)
+        st.markdown("**Description for Graph 3:** Enter analysis here...")
+
+        fig4 = px.scatter(x=[1, 2, 3], y=[5, 2, 7], title="Sample Graph 4")
+        st.plotly_chart(fig4, use_container_width=True)
+        st.markdown("**Description for Graph 4:** Enter analysis here...")
+
+    with col2:
+        fig5 = px.bar(x=["X", "Y", "Z"], y=[4, 3, 5], title="Sample Graph 5")
+        st.plotly_chart(fig5, use_container_width=True)
+        st.markdown("**Description for Graph 5:** Enter analysis here...")
+
+        fig6 = px.line(x=[1, 2, 3], y=[6, 1, 8], title="Sample Graph 6")
+        st.plotly_chart(fig6, use_container_width=True)
+        st.markdown("**Description for Graph 6:** Enter analysis here...")
