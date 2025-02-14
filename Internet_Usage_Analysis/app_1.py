@@ -116,7 +116,7 @@ with col_center:
             <a href="https://www.linkedin.com/in/dimitrisstou/" target="_blank">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" width="50"/>
             </a>
-            <a href="https://github.com/Dimitrist23/internet-usage-analysis" target="_blank">
+            <a href="https://github.com/Dimitrist23/internet-usage-analysis-competition" target="_blank">
                 <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="50"/>
             </a>
         </div>
