@@ -131,7 +131,7 @@ if continent_tab:
 
     # Graph 1: Global Internet Usage & Events
     st.components.v1.html(
-        open("Workbook/Global.html", "r", encoding="utf-8").read(),
+        open("Workbook/interactive_graphs/Global.html", "r", encoding="utf-8").read(),
         height=400
     )
     st.markdown(
@@ -142,7 +142,7 @@ if continent_tab:
 
     # Graph 2: Average Growth % of Internet Usage per Continent with Historical Events
     st.components.v1.html(
-        open("Workbook/ContLine.html", "r", encoding="utf-8").read(),
+        open("Workbook/interactive_graphs/ContLine.html", "r", encoding="utf-8").read(),
         height=400
     )
     st.markdown(
@@ -153,7 +153,7 @@ if continent_tab:
 
     # Graph 3: Annual Growth % of Internet Usage with Historical Events
     st.components.v1.html(
-        open("Workbook/indepth.html", "r", encoding="utf-8").read(),
+        open("Workbook/interactive_graphs/indepth.html", "r", encoding="utf-8").read(),
         height=400
     )
     st.markdown(
@@ -164,7 +164,7 @@ if continent_tab:
 
     # Graph 4: Internet Usage by Country Over Time
     st.components.v1.html(
-        open("Workbook/Globe.html", "r", encoding="utf-8").read(),
+        open("Workbook/interactive_graphs/Globe.html", "r", encoding="utf-8").read(),
         height=700
     )
     st.markdown(
@@ -176,7 +176,7 @@ if country_tab:
 
     # Graph 1: Internet Usage Trends by Country
     st.components.v1.html(
-        open("Workbook/CountryLine.html", "r", encoding="utf-8").read(),
+        open("Workbook/interactive_graphs/CountryLine.html", "r", encoding="utf-8").read(),
         height=450
     )
     st.markdown(
@@ -187,7 +187,7 @@ if country_tab:
 
     # Graph 2: Internet Usage Comparison (2000 vs 2022)
     st.components.v1.html(
-        open("Workbook/ScatterCountry.html", "r", encoding="utf-8").read(),
+        open("Workbook/interactive_graphs/ScatterCountry.html", "r", encoding="utf-8").read(),
         height=450
     )
     st.markdown(
